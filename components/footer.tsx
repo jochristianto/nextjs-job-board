@@ -1,5 +1,5 @@
 import type { FC } from "react";
-import { ThemeSwitcher } from "./theme-switcher";
+import { ThemeSwitcher } from "@/components/theme-switcher";
 
 type FooterProps = {};
 
