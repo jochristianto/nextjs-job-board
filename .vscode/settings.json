@@ -1,0 +1,28 @@
+{
+  "css.lint.unknownAtRules": "ignore",
+  "editor.codeActionsOnSave": {
+    "source.fixAll": "always",
+    "source.fixAll.eslint": "always",
+    "source.organizeImports": "always"
+  },
+  "editor.formatOnPaste": true,
+  "editor.tabSize": 2,
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact"
+  },
+  "eslint.format.enable": true,
+  "eslint.run": "onSave",
+  "files.exclude": {
+    "**/.docker/backup/postgress": true,
+    "**/.docker/data/sample_data.sql": true,
+    "**/.next": true,
+    "**/.swc": true,
+    "**/coverage": true,
+    "**/scripts/becomeone-gms.postman_collection.json": true
+  },
+  "scss.lint.unknownAtRules": "ignore",
+  "typescript.preferences.includePackageJsonAutoImports": "on",
+  "typescript.suggest.autoImports": true,
+  "typescript.suggest.includeCompletionsForImportStatements": true,
+  "prettier.configPath": "./.prettierrc"
+}

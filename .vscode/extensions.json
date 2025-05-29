@@ -1,0 +1,14 @@
+{
+  "recommendations": [
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "mgmcdermott.vscode-language-babel",
+    "clinyong.vscode-css-modules",
+    "bradlc.vscode-tailwindcss",
+    "gruntfuggly.todo-tree",
+    "mikestead.dotenv",
+    "avneeshagarwal.react-nextjs-snippets",
+    "stylelint.vscode-stylelint",
+    "pulkitgangwar.nextjs-snippets"
+  ]
+}
