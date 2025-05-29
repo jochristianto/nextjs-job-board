@@ -1,4 +1,7 @@
 import { FlatCompat } from "@eslint/eslintrc";
+import stylistic from "@stylistic/eslint-plugin";
+import noRelativeImportPaths from "eslint-plugin-no-relative-import-paths";
+import noUnusedImports from "eslint-plugin-unused-imports";
 import { dirname } from "path";
 import { fileURLToPath } from "url";
 
@@ -14,8 +17,9 @@ const eslintConfig = [
   {
     // plugins: ["unused-imports", "no-relative-import-paths"],
     plugins: {
-      "unused-imports": "unused-imports",
-      "no-relative-import-paths": "no-relative-import-paths",
+      "unused-imports": noUnusedImports,
+      "no-relative-import-paths": noRelativeImportPaths,
+      "@stylistic": stylistic,
     },
     rules: {
       "react/no-unescaped-entities": "off",
@@ -28,10 +32,10 @@ const eslintConfig = [
       // no-relative-import-paths
       "no-relative-import-paths/no-relative-import-paths": [
         "error",
-        { allowSameFolder: false, prefix: "@", rootDir: "src" },
+        { allowSameFolder: false, prefix: "@", rootDir: "./" },
       ],
 
-      "@stylistic/js/max-len": [
+      "@stylistic/max-len": [
         "error",
         {
           code: 100,
@@ -42,7 +46,7 @@ const eslintConfig = [
           ignoreTemplateLiterals: true,
         },
       ],
-      "@stylistic/js/comma-dangle": ["error", "always-multiline"],
+      "@stylistic/comma-dangle": ["error", "always-multiline"],
     },
   },
 ];
