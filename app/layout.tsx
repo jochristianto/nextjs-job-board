@@ -1,7 +1,7 @@
-import type { Metadata } from "next";
-import { Geist } from "next/font/google";
-import { ThemeProvider } from "next-themes";
 import "@/app/globals.css";
+import type { Metadata } from "next";
+import { ThemeProvider } from "next-themes";
+import { Geist } from "next/font/google";
 
 const defaultUrl = process.env.VERCEL_URL
   ? `https://${process.env.VERCEL_URL}`
@@ -9,8 +9,8 @@ const defaultUrl = process.env.VERCEL_URL
 
 export const metadata: Metadata = {
   metadataBase: new URL(defaultUrl),
-  title: "Job Board",
-  // description: "The fastest way to build apps with Next.js and Supabase",
+  title: "Better Job",
+  description: "A better way to find your next job.",
 };
 
 const geistSans = Geist({

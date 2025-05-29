@@ -5,9 +5,10 @@ type LogoProps = {};
 
 const Logo: FC<LogoProps> = () => {
   return (
-    <Link href="/" className="flex items-center gap-0 text-base font-normal">
-      <span className="lowercase">Job</span>
-      <span className="lowercase font-semibold">Board</span>
+    <Link href="/" className="flex items-center gap-0 text-base font-semibold leading-[0]">
+      <span>better</span>
+      <span className="text-brand">job</span>
+      <span>.</span>
     </Link>
   );
 };

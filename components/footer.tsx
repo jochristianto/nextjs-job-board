@@ -1,23 +1,24 @@
-import type { FC } from "react";
+import Container from "@/components/container";
 import { ThemeSwitcher } from "@/components/theme-switcher";
+import { Text } from "@/components/ui/text";
+import type { FC } from "react";
 
 type FooterProps = {};
 
 const Footer: FC<FooterProps> = () => {
   return (
-    <footer className="w-full flex items-center justify-between border-t mx-auto text-center text-md gap-8 px-4 py-3">
-      <p>
-        Powered by{" "}
-        <a
-          href="https://supabase.com/?utm_source=create-next-app&utm_medium=template&utm_term=nextjs"
-          target="_blank"
-          className="font-bold hover:underline"
-          rel="noreferrer"
-        >
-          Supabase
-        </a>
-      </p>
-      <ThemeSwitcher />
+    <footer className="w-full border-t">
+      <Container className="p-3 px-5 flex items-center justify-between">
+        <div>
+          <ThemeSwitcher />
+        </div>
+
+        <div className="flex items-center gap-3">
+          <Text variant="tinyText" className="uppercase">
+            &copy; {new Date().getFullYear()} Better Job. All rights reserved.
+          </Text>
+        </div>
+      </Container>
     </footer>
   );
 };
