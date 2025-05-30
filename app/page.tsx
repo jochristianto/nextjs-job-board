@@ -2,6 +2,7 @@
 
 import Hero from "@/app/components/hero";
 import JobCard from "@/app/components/job-card";
+import JobDetailsDialog from "@/app/components/job-details-dialog";
 import JobFilter from "@/app/components/job-filter";
 import Container from "@/components/container";
 import Footer from "@/components/footer";
@@ -14,6 +15,8 @@ export default function Home() {
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [jobs, setJobs] = useState<any[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
+  const [selectedJob, setSelectedJob] = useState<any | null>(null);
+  const [dialogOpen, setDialogOpen] = useState(false);
 
   // Fetch jobs when filters or search change
   useEffect(() => {
@@ -57,13 +60,24 @@ export default function Home() {
                 ) : jobs.length === 0 ? (
                   <p>No jobs found.</p>
                 ) : (
-                  jobs.map((job) => <JobCard key={job.id} job={job} />)
+                  jobs.map((job) => (
+                    <JobCard
+                      key={job.id}
+                      job={job}
+                      onClick={(job) => {
+                        setSelectedJob(job);
+                        setDialogOpen(true);
+                      }}
+                    />
+                  ))
                 )}
               </div>
             </div>
           </div>
         </Container>
       </div>
+
+      <JobDetailsDialog open={dialogOpen} job={selectedJob} onClose={() => setDialogOpen(false)} />
 
       <Footer />
     </main>
