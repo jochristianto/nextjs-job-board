@@ -9,7 +9,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 const compat = new FlatCompat({
-  baseDirectory: __dirname,
+  baseDirectory: __dirname
 });
 
 const eslintConfig = [
@@ -19,7 +19,7 @@ const eslintConfig = [
     plugins: {
       "unused-imports": noUnusedImports,
       "no-relative-import-paths": noRelativeImportPaths,
-      "@stylistic": stylistic,
+      "@stylistic": stylistic
     },
     rules: {
       "react/no-unescaped-entities": "off",
@@ -32,7 +32,7 @@ const eslintConfig = [
       // no-relative-import-paths
       "no-relative-import-paths/no-relative-import-paths": [
         "error",
-        { allowSameFolder: false, prefix: "@", rootDir: "./" },
+        { allowSameFolder: false, prefix: "@", rootDir: "./" }
       ],
 
       "@stylistic/max-len": [
@@ -43,12 +43,12 @@ const eslintConfig = [
           ignoreComments: true,
           // ignoreTrailingComments: true,
           ignoreStrings: true,
-          ignoreTemplateLiterals: true,
-        },
+          ignoreTemplateLiterals: true
+        }
       ],
-      "@stylistic/comma-dangle": ["error", "always-multiline"],
-    },
-  },
+      "@stylistic/comma-dangle": ["error", "never"]
+    }
+  }
 ];
 
 export default eslintConfig;
