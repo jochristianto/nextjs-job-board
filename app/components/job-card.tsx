@@ -1,5 +1,8 @@
+import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Text } from "@/components/ui/text";
 import { getJobLocationLabel } from "@/lib/jobs";
 import { TJob } from "@/types/job";
+import { Building2Icon, MapPinIcon } from "lucide-react";
 
 type JobCardProps = {
   job: TJob;
@@ -7,14 +10,39 @@ type JobCardProps = {
 
 export default function JobCard({ job }: JobCardProps) {
   return (
-    <div className="border rounded-lg p-6 shadow-sm bg-white flex flex-col gap-2">
-      <h2 className="text-xl font-semibold">{job.title}</h2>
-      <div className="text-gray-600">{job.companyName}</div>
-      <div className="text-gray-500 text-sm">{getJobLocationLabel(job.location)}</div>
-      <div className="text-gray-700 whitespace-pre-line break-words">{job.description}</div>
-      <div className="text-xs text-gray-400 mt-2">
-        Posted: {job.createdAt ? new Date(job.createdAt).toLocaleDateString() : "Unknown"}
-      </div>
-    </div>
+    <Card className="flex flex-col gap-1 shadow-none cursor-pointer hover:shadow-lg transition-all duration-200 hover:border-blue-300 border-l-4">
+      <CardHeader className="space-y-2">
+        <CardTitle>
+          <Text variant="h4" className="font-bold">
+            {job.title}
+          </Text>
+        </CardTitle>
+
+        <CardDescription>
+          <div className="flex items-center gap-3 text-gray-600">
+            <div className="flex items-center gap-2">
+              <Building2Icon className="size-4" />
+              <Text variant="body">{job.companyName}</Text>
+            </div>
+
+            <Text className="text-gray-500">&bull;</Text>
+
+            <div className="flex items-center gap-2">
+              <MapPinIcon className="size-4" />
+              <Text variant="body">{getJobLocationLabel(job.location)}</Text>
+            </div>
+
+            <Text className="text-gray-500">&bull;</Text>
+
+            <div className="flex items-center gap-2">
+              <MapPinIcon className="size-4" />
+              <Text variant="body">
+                {job.createdAt ? new Date(job.createdAt).toLocaleDateString() : "Unknown"}
+              </Text>
+            </div>
+          </div>
+        </CardDescription>
+      </CardHeader>
+    </Card>
   );
 }

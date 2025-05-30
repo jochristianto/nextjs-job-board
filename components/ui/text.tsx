@@ -17,12 +17,12 @@ const textVariants = cva("", {
       display6: "font-display scroll-m-20 text-xl tracking-normal lg:text-xl",
       userH3: "scroll-m-20 text-[1.625rem] font-bold tracking-tight font-sans text-[#595959]",
       userBody: "scroll-m-20 text-[1.0625rem] font-normal tracking-tight font-sans text-[#595959]",
-      h1: "scroll-m-20 text-4xl font-bold tracking-tight lg:text-4xl font-serif",
-      h2: "scroll-m-20 pb-2 text-3xl font-bold tracking-tight first:mt-0 font-serif",
-      h3: "scroll-m-20 text-2xl font-bold tracking-tight font-serif",
-      h4: "scroll-m-20 text-xl font-bold tracking-tight font-serif",
-      h5: "scroll-m-20 text-lg font-semibold tracking-tight font-serif",
-      h6: "scroll-m-20 text-base font-semibold tracking-tight font-serif",
+      h1: "scroll-m-20 text-4xl font-bold tracking-tight lg:text-4xl font-sans",
+      h2: "scroll-m-20 pb-2 text-3xl font-bold tracking-tight first:mt-0 font-sans",
+      h3: "scroll-m-20 text-2xl font-bold tracking-tight font-sans",
+      h4: "scroll-m-20 text-xl font-bold tracking-tight font-sans",
+      h5: "scroll-m-20 text-lg font-semibold tracking-tight font-sans",
+      h6: "scroll-m-20 text-base font-semibold tracking-tight font-sans",
       p: "leading-7",
       blockquote: "mt-6 border-l-2 pl-6 italic",
       ul: "my-6 ml-6 list-disc [&>li]:mt-2",
@@ -44,7 +44,7 @@ const textVariants = cva("", {
 
 export interface TextProps
   extends React.HTMLAttributes<HTMLParagraphElement>,
-  VariantProps<typeof textVariants> {
+    VariantProps<typeof textVariants> {
   asChild?: boolean;
   as?: string;
 }

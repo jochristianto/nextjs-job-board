@@ -1,7 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import {
   Select,
   SelectContent,
@@ -30,14 +30,17 @@ const JobFilter: FC<JobFilterProps> = ({ onChange }) => {
 
   return (
     <div className="grid-cols-1">
-      <Card>
+      <Card className="shadow-none">
         <CardHeader>
-          <h3 className="font-semibold text-gray-900">Filter Jobs</h3>
+          <CardTitle>Filter Jobs</CardTitle>
+          <CardDescription>
+            Use the filters below to narrow down job listings based on location and job type.
+          </CardDescription>
         </CardHeader>
 
         <CardContent className="space-y-4">
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">Location</label>
+          <div className="space-y-2">
+            <label className="block text-sm font-medium text-gray-700">Location</label>
             <Select value={locationFilter} onValueChange={setLocationFilter}>
               <SelectTrigger className="w-full">
                 <SelectValue placeholder="All Locations" />
@@ -53,8 +56,8 @@ const JobFilter: FC<JobFilterProps> = ({ onChange }) => {
             </Select>
           </div>
 
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">Job Type</label>
+          <div className="space-y-2">
+            <label className="block text-sm font-medium text-gray-700">Job Type</label>
             <Select value={typeFilter} onValueChange={setTypeFilter}>
               <SelectTrigger className="w-full">
                 <SelectValue placeholder="All Job Types" />
