@@ -34,12 +34,12 @@ const textVariants = cva("", {
       tinyText: "text-xs",
       xxsText: "text-[.6875rem] leading-4",
       mutedText: "text-base text-muted-foreground",
-      body: "text-base font-normal",
-    },
+      body: "text-base font-normal"
+    }
   },
   defaultVariants: {
-    variant: "body",
-  },
+    variant: "body"
+  }
 });
 
 export interface TextProps

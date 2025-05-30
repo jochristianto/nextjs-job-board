@@ -7,7 +7,7 @@ export async function AuthButton() {
   const supabase = await createClient();
 
   const {
-    data: { user },
+    data: { user }
   } = await supabase.auth.getUser();
 
   return user ? (

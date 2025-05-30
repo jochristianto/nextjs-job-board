@@ -2,7 +2,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 
 export function TutorialStep({
   title,
-  children,
+  children
 }: {
   title: string;
   children: React.ReactNode;
