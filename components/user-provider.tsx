@@ -12,7 +12,9 @@ export function UserProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     async function fetchUser() {
       const supabase = createClient();
-      const { data: { user } } = await supabase.auth.getUser();
+      const {
+        data: { user }
+      } = await supabase.auth.getUser();
       setUser(user);
     }
 

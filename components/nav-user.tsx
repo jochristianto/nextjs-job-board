@@ -17,10 +17,7 @@ import {
 } from "@/components/ui/sidebar";
 import { createClient } from "@/lib/supabase/client";
 import { User } from "@supabase/supabase-js";
-import {
-  IconDotsVertical,
-  IconLogout
-} from "@tabler/icons-react";
+import { IconDotsVertical, IconLogout } from "@tabler/icons-react";
 import { useRouter } from "next/navigation";
 
 interface NavUserProps {
@@ -37,16 +34,16 @@ export function NavUser({ user }: NavUserProps) {
 
   const userEmail = user.email || "-";
   const userName = user.user_metadata?.full_name || (user.email?.split("@")[0] ?? "User");
-  const userInitials: string = userName.replace(/[^a-zA-Z]/g, "").slice(0, 2).toUpperCase();
+  const userInitials: string = userName
+    .replace(/[^a-zA-Z]/g, "")
+    .slice(0, 2)
+    .toUpperCase();
 
-
-  
   const logout = async () => {
     const supabase = createClient();
     await supabase.auth.signOut();
     router.push("/auth/login");
   };
-  
 
   return (
     <SidebarMenu>

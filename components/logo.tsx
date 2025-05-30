@@ -12,7 +12,8 @@ const Logo: FC<LogoProps> = () => {
       <div className="flex items-center gap-0 text-base font-semibold leading-[0]">
         <span>better</span>
         <span className="text-brand">job</span>
-        <span>.</span></div>
+        <span>.</span>
+      </div>
     </Link>
   );
 };

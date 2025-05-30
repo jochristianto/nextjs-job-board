@@ -15,10 +15,10 @@ export function NavMain({
   items
 }: {
   items: {
-    title: string
-    url: string
-    icon?: Icon
-  }[]
+    title: string;
+    url: string;
+    icon?: Icon;
+  }[];
 }) {
   return (
     <SidebarGroup>
