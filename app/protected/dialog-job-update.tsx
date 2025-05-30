@@ -1,6 +1,6 @@
 "use client";
 
-import FormJobUpdate from "@/app/protected/jobs/form-job-update";
+import FormJobUpdate from "@/app/protected/form-job-update";
 import {
   Dialog,
   DialogContent,

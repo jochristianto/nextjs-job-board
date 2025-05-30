@@ -1,6 +1,6 @@
 "use client";
 
-import FormJobCreate from "@/app/protected/jobs/form-job-create";
+import FormJobCreate from "@/app/protected/form-job-create";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,

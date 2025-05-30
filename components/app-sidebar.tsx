@@ -1,6 +1,6 @@
 "use client";
 
-import { IconDashboard, IconListDetails } from "@tabler/icons-react";
+import { IconListDetails } from "@tabler/icons-react";
 import * as React from "react";
 
 import Logo from "@/components/logo";
@@ -20,15 +20,15 @@ import { useUser } from "@/components/user-provider";
 const data = {
   navMain: [
     {
-      title: "Dashboard",
-      url: "/protected",
-      icon: IconDashboard
-    },
-    {
       title: "Jobs",
-      url: "/protected/jobs",
+      url: "/protected",
       icon: IconListDetails
     }
+    // {
+    //   title: "Jobs",
+    //   url: "/protected/jobs",
+    //   icon: IconListDetails
+    // }
   ]
   // navSecondary: [
   //   {
