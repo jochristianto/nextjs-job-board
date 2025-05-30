@@ -1,9 +1,6 @@
 "use client";
 
-import {
-  IconDashboard,
-  IconListDetails
-} from "@tabler/icons-react";
+import { IconDashboard, IconListDetails } from "@tabler/icons-react";
 import * as React from "react";
 
 import Logo from "@/components/logo";
@@ -52,7 +49,7 @@ const data = {
   // ]
 };
 
-export  function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   const user = useUser();
 
   return (
@@ -60,10 +57,7 @@ export  function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) 
       <SidebarHeader>
         <SidebarMenu>
           <SidebarMenuItem>
-            <SidebarMenuButton
-              asChild
-              className="data-[slot=sidebar-menu-button]:!p-1.5"
-            >
+            <SidebarMenuButton asChild className="data-[slot=sidebar-menu-button]:!p-1.5">
               <Logo />
             </SidebarMenuButton>
           </SidebarMenuItem>
