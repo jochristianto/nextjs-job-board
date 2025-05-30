@@ -14,7 +14,7 @@ export default function Home() {
   const [typeFilter, setTypeFilter] = useState<string>("all");
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [jobs, setJobs] = useState<any[]>([]);
-  const [loading, setLoading] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
   const [selectedJob, setSelectedJob] = useState<any | null>(null);
   const [dialogOpen, setDialogOpen] = useState(false);
 
@@ -25,7 +25,7 @@ export default function Home() {
       return;
     }
 
-    setLoading(true);
+    setIsLoading(true);
     const params = new URLSearchParams();
     if (locationFilter !== "all") params.append("location", locationFilter);
     if (typeFilter !== "all") params.append("jobType", typeFilter);
@@ -34,7 +34,7 @@ export default function Home() {
     fetch(`/api/jobs?${params.toString()}`)
       .then((res) => res.json())
       .then(setJobs)
-      .finally(() => setLoading(false));
+      .finally(() => setIsLoading(false));
   }, [locationFilter, typeFilter, searchQuery]);
 
   return (
@@ -42,11 +42,12 @@ export default function Home() {
       <div className="flex-1">
         <Header />
 
-        <Hero onSearch={setSearchQuery} />
+        <Hero isLoading={isLoading} onSearch={setSearchQuery} />
 
         <Container className="px-4 py-8 flex flex-col items-center">
           <div className="grid grid-cols-4 gap-8 w-full">
             <JobFilter
+              isLoading={isLoading}
               onChange={({ location, jobType }) => {
                 setLocationFilter(location);
                 setTypeFilter(jobType);
@@ -55,7 +56,7 @@ export default function Home() {
 
             <div className="col-span-3">
               <div className="flex flex-col gap-5">
-                {loading ? (
+                {isLoading ? (
                   <p>Loading...</p>
                 ) : jobs.length === 0 ? (
                   <p>No jobs found.</p>

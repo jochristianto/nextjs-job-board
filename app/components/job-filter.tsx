@@ -13,10 +13,11 @@ import { jobLocations, jobTypes } from "@/constants";
 import { useEffect, useState, type FC } from "react";
 
 type JobFilterProps = {
+  isLoading?: boolean;
   onChange?: (filters: { location: string; jobType: string }) => void;
 };
 
-const JobFilter: FC<JobFilterProps> = ({ onChange }) => {
+const JobFilter: FC<JobFilterProps> = ({ isLoading = false, onChange }) => {
   const [locationFilter, setLocationFilter] = useState<string>("all");
   const [typeFilter, setTypeFilter] = useState<string>("all");
 
@@ -42,7 +43,7 @@ const JobFilter: FC<JobFilterProps> = ({ onChange }) => {
           <div className="space-y-2">
             <label className="block text-sm font-medium text-gray-700">Location</label>
             <Select value={locationFilter} onValueChange={setLocationFilter}>
-              <SelectTrigger className="w-full">
+              <SelectTrigger className="w-full" disabled={isLoading}>
                 <SelectValue placeholder="All Locations" />
               </SelectTrigger>
               <SelectContent>
@@ -59,7 +60,7 @@ const JobFilter: FC<JobFilterProps> = ({ onChange }) => {
           <div className="space-y-2">
             <label className="block text-sm font-medium text-gray-700">Job Type</label>
             <Select value={typeFilter} onValueChange={setTypeFilter}>
-              <SelectTrigger className="w-full">
+              <SelectTrigger className="w-full" disabled={isLoading}>
                 <SelectValue placeholder="All Job Types" />
               </SelectTrigger>
               <SelectContent>
@@ -76,6 +77,7 @@ const JobFilter: FC<JobFilterProps> = ({ onChange }) => {
           <Button
             variant="outline"
             className="w-full"
+            disabled={isLoading}
             onClick={() => {
               setLocationFilter("all");
               setTypeFilter("all");

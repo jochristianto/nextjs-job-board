@@ -28,7 +28,7 @@ export async function getJobs(filters?: {
   companyName?: string;
   description?: string;
   location?: string;
-  jobType?: string;
+  jobType?: (typeof jobsTable.$inferSelect)["jobType"];
 }) {
   const query = db.select().from(jobsTable);
 
@@ -46,14 +46,19 @@ export async function getJobs(filters?: {
     );
   }
 
-  // Other filters AND logic
   if (filters?.title) whereClauses.push(ilike(jobsTable.title, `%${filters.title}%`));
+
   if (filters?.companyName)
     whereClauses.push(ilike(jobsTable.companyName, `%${filters.companyName}%`));
+
   if (filters?.description)
     whereClauses.push(ilike(jobsTable.description, `%${filters.description}%`));
+
   if (filters?.location) whereClauses.push(ilike(jobsTable.location, `%${filters.location}%`));
-  if (filters?.jobType) whereClauses.push(ilike(jobsTable.jobType, `%${filters.jobType}%`));
+
+  if (filters?.jobType) {
+    whereClauses.push(eq(jobsTable.jobType, filters.jobType));
+  }
 
   if (whereClauses.length > 0) {
     query.where(and(...whereClauses));

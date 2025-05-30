@@ -8,10 +8,11 @@ import { Search } from "lucide-react";
 import { useState, type FC } from "react";
 
 type HeroProps = {
+  isLoading?: boolean;
   onSearch?: (query: string) => void;
 };
 
-const Hero: FC<HeroProps> = ({ onSearch }) => {
+const Hero: FC<HeroProps> = ({ isLoading = false, onSearch }) => {
   const [searchQuery, setSearchQuery] = useState<string>("");
 
   const handleSearch = () => {
@@ -46,10 +47,11 @@ const Hero: FC<HeroProps> = ({ onSearch }) => {
                   onKeyDown={(e) => {
                     if (e.key === "Enter") handleSearch();
                   }}
+                  disabled={isLoading}
                 />
               </div>
 
-              <Button variant="default" size="lg" onClick={handleSearch}>
+              <Button variant="default" size="lg" onClick={handleSearch} disabled={isLoading}>
                 Search Jobs
               </Button>
             </div>
