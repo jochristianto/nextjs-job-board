@@ -45,7 +45,7 @@ export default function Home() {
         <Hero isLoading={isLoading} onSearch={setSearchQuery} />
 
         <Container className="px-4 py-8 flex flex-col items-center">
-          <div className="grid grid-cols-4 gap-8 w-full">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 w-full">
             <JobFilter
               isLoading={isLoading}
               onChange={({ location, jobType }) => {
@@ -54,7 +54,7 @@ export default function Home() {
               }}
             />
 
-            <div className="col-span-3">
+            <div className="col-span-1 md:col-span-3">
               <div className="flex flex-col gap-5">
                 {isLoading ? (
                   <p>Loading...</p>
@@ -64,9 +64,9 @@ export default function Home() {
                   jobs.map((job) => (
                     <JobCard
                       key={job.id}
-                      job={job}
-                      onClick={(job) => {
-                        setSelectedJob(job);
+                      data={job}
+                      onClick={(data) => {
+                        setSelectedJob(data);
                         setDialogOpen(true);
                       }}
                     />

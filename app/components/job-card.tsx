@@ -5,45 +5,46 @@ import { TJob } from "@/types/job";
 import { Building2Icon, ContactIcon, MapPinIcon } from "lucide-react";
 
 type JobCardProps = {
-  job: TJob;
-  onClick?: (job: TJob) => void;
+  data: TJob;
+  onClick?: (data: TJob) => void;
 };
 
-export default function JobCard({ job, onClick }: JobCardProps) {
+export default function JobCard({ data, onClick }: JobCardProps) {
   return (
     <Card
       className="flex flex-col gap-1 shadow-none cursor-pointer hover:shadow-lg transition-all duration-200 hover:border-blue-300 border-l-4 border-l-gray-100"
-      onClick={() => onClick?.(job)}
+      onClick={() => onClick?.(data)}
       tabIndex={0}
       role="button"
-      aria-label={`View details for ${job.title}`}
+      aria-label={`View details for ${data.title}`}
     >
       <CardHeader className="space-y-2">
         <CardTitle>
           <Text variant="h4" className="font-bold">
-            {job.title}
+            {data.title}
           </Text>
         </CardTitle>
         <CardDescription>
-          <div className="flex items-center gap-3 text-gray-600">
+          <div className="flex flex-col md:flex-row md:items-center gap-1 md:gap-3 text-gray-600">
             <div className="flex items-center gap-2">
               <Building2Icon className="size-4" />
-              <Text variant="body">{job.companyName}</Text>
+              <Text variant="body">{data.companyName}</Text>
             </div>
-            <Text className="text-gray-500">&bull;</Text>
+            <Text className="hidden md:block text-gray-500">&bull;</Text>
             <div className="flex items-center gap-2">
               <MapPinIcon className="size-4" />
-              <Text variant="body">{getJobLocationLabel(job.location)}</Text>
+              <Text variant="body">{getJobLocationLabel(data.location)}</Text>
             </div>
-            <Text className="text-gray-500">&bull;</Text>
+            <Text className="hidden md:block text-gray-500">&bull;</Text>
             <div className="flex items-center gap-2">
               <ContactIcon className="size-4" />
-              <Text variant="body">{getJobTypeLabel(job.jobType)}</Text>
+              <Text variant="body">{getJobTypeLabel(data.jobType)}</Text>
             </div>
-            <Text className="text-gray-500">&bull;</Text>
+            <Text className="hidden md:block text-gray-500">&bull;</Text>
             <div className="flex items-center gap-2">
               <Text variant="body">
-                Posted on {job.createdAt ? new Date(job.createdAt).toLocaleDateString() : "Unknown"}
+                Posted on{" "}
+                {data.createdAt ? new Date(data.createdAt).toLocaleDateString() : "Unknown"}
               </Text>
             </div>
           </div>
