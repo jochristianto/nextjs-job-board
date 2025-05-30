@@ -39,14 +39,25 @@ const eslintConfig = [
         "error",
         {
           code: 100,
-          comments: 150,
+          comments: 100,
           ignoreComments: true,
           // ignoreTrailingComments: true,
           ignoreStrings: true,
           ignoreTemplateLiterals: true
         }
       ],
-      "@stylistic/comma-dangle": ["error", "never"]
+      "@stylistic/comma-dangle": ["error", "never"],
+      "@stylistic/indent": ["error", 2],
+      "@stylistic/quotes": ["error", "double", { avoidEscape: true, allowTemplateLiterals: true }],
+      "@stylistic/semi": ["error", "always"],
+      "@stylistic/space-before-function-paren": [
+        "error",
+        {
+          anonymous: "always",
+          named: "never",
+          asyncArrow: "always"
+        }
+      ]
     }
   }
 ];
