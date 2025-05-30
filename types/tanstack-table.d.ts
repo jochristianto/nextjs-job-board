@@ -7,7 +7,7 @@ declare module "@tanstack/react-table" {
   }
 }
 
-export interface DataTableRowAction<TData, TType = "update" | "delete"> {
+export interface DataTableRowAction<TData, TType = "view" | "update" | "delete"> {
   row: Row<TData>;
   type: TType;
 }

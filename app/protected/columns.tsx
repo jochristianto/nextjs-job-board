@@ -14,8 +14,7 @@ import { TJob } from "@/types/job";
 import { DataTableRowAction } from "@/types/tanstack-table";
 import { User } from "@supabase/supabase-js";
 import { ColumnDef } from "@tanstack/react-table";
-import { ExternalLinkIcon, MoreVerticalIcon, PencilIcon, Trash2Icon } from "lucide-react";
-import Link from "next/link";
+import { EyeIcon, MoreVerticalIcon, PencilIcon, Trash2Icon } from "lucide-react";
 
 export const getColumns = ({
   user,
@@ -52,14 +51,15 @@ export const getColumns = ({
 
         return (
           <>
-            <Link
-              href={`/jobs/${row.original.id}`}
+            <div
+              onClick={() => setRowAction({ row, type: "view" })}
+              tabIndex={0}
+              role="button"
+              aria-label={`View details for ${row.original.title}`}
               className="cursor-pointer"
-              target="_blank"
-              rel="noopener noreferrer"
             >
               <Content />
-            </Link>
+            </div>
           </>
         );
       }
@@ -92,17 +92,15 @@ export const getColumns = ({
       cell: ({ row }) => {
         return (
           <div className="flex items-center justify-center gap-2">
-            <Link
-              href={`/jobs/${row.original.id}`}
-              className="cursor-pointer"
-              target="_blank"
-              rel="noopener noreferrer"
+            <Button
+              variant="ghost"
+              className="size-10 p-0"
+              title="Preview job"
+              onClick={() => setRowAction({ row, type: "view" })}
             >
-              <Button variant="ghost" className="size-10 p-0" title="Preview job">
-                <span className="sr-only">Preview</span>
-                <ExternalLinkIcon className="size-5" />
-              </Button>
-            </Link>
+              <span className="sr-only">Preview</span>
+              <EyeIcon className="size-5" />
+            </Button>
 
             <DropdownMenu>
               <DropdownMenuTrigger asChild disabled={user?.id !== row.original.createdBy}>

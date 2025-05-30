@@ -78,7 +78,7 @@ export default function Home() {
         </Container>
       </div>
 
-      <JobDetailsDialog open={dialogOpen} job={selectedJob} onClose={() => setDialogOpen(false)} />
+      <JobDetailsDialog open={dialogOpen} setOpen={setDialogOpen} data={selectedJob} />
 
       <Footer />
     </main>

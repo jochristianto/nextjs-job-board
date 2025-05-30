@@ -140,3 +140,9 @@ export const deleteJob = withAuth(async (user, jobId) => {
     return { success: false, error: "Failed to delete job" };
   }
 });
+
+export async function getJobById(jobId: string) {
+  if (!jobId) return null;
+  const job = await db.select().from(jobsTable).where(eq(jobsTable.id, jobId)).limit(1);
+  return job[0] ?? null;
+}

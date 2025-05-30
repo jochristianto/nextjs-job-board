@@ -16,19 +16,20 @@ import {
   SidebarMenuItem
 } from "@/components/ui/sidebar";
 import { useUser } from "@/components/user-provider";
+import { HomeIcon } from "lucide-react";
 
 const data = {
   navMain: [
+    {
+      title: "Home",
+      url: "/",
+      icon: HomeIcon
+    },
     {
       title: "Jobs",
       url: "/protected",
       icon: IconListDetails
     }
-    // {
-    //   title: "Jobs",
-    //   url: "/protected/jobs",
-    //   icon: IconListDetails
-    // }
   ]
   // navSecondary: [
   //   {

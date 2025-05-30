@@ -1,6 +1,7 @@
 "use client";
 
 import { createJob, deleteJob, getJobs, updateJob } from "@/app/actions";
+import JobDetailsDialog from "@/app/components/job-details-dialog";
 import { getColumns } from "@/app/protected/columns";
 import DialogJobCreate from "@/app/protected/dialog-job-create";
 import DialogJobDelete from "@/app/protected/dialog-job-delete";
@@ -76,6 +77,10 @@ const JobsPage: FC<JobsPageProps> = () => {
           <DataTable isLoading={isLoading} columns={columns} data={jobs} />
         </div>
       </Container>
+
+      {rowAction && rowAction.type === "view" && (
+        <JobDetailsDialog open setOpen={() => setRowAction(null)} data={rowAction.row.original} />
+      )}
 
       {rowAction && rowAction.type === "update" && (
         <DialogJobUpdate

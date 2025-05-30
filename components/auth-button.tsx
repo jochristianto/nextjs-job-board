@@ -22,7 +22,7 @@ export function AuthButton() {
   return user ? (
     <div className="flex items-center gap-4 text-sm">
       <Button asChild size="sm" variant="outline">
-        <Link href="/protected">Dashboard</Link>
+        <Link href="/protected">Manage Jobs</Link>
       </Button>
     </div>
   ) : (

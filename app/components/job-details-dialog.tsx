@@ -13,43 +13,43 @@ import { FC } from "react";
 
 type JobDetailsDialogProps = {
   open: boolean;
-  job: TJob | null;
-  onClose: () => void;
+  setOpen: (open: boolean) => void;
+  data: TJob | null;
 };
 
-const JobDetailsDialog: FC<JobDetailsDialogProps> = ({ open, job, onClose }) => {
-  if (!job) return null;
+const JobDetailsDialog: FC<JobDetailsDialogProps> = ({ open, setOpen, data }) => {
+  if (!data) return null;
 
   return (
-    <Dialog open={open} onOpenChange={onClose}>
+    <Dialog open={open} onOpenChange={setOpen}>
       <DialogContent showCloseButton className="min-w-1/2 max-w-11/12 max-h-11/12 p-0">
         <DialogHeader className="border-b border-gray-200 pb-4 p-6 rounded-t bg-gray-100">
           <DialogTitle>
             <Text variant="h4" className="font-bold">
-              {job.title}
+              {data.title}
             </Text>
           </DialogTitle>
-          <DialogDescription>
+          <DialogDescription asChild>
             <div className="flex items-center gap-3 text-gray-600">
               <div className="flex items-center gap-2">
                 <Building2Icon className="size-4" />
-                <Text variant="body">{job.companyName}</Text>
+                <Text variant="body">{data.companyName}</Text>
               </div>
               <Text className="text-gray-500">&bull;</Text>
               <div className="flex items-center gap-2">
                 <MapPinIcon className="size-4" />
-                <Text variant="body">{getJobLocationLabel(job.location)}</Text>
+                <Text variant="body">{getJobLocationLabel(data.location)}</Text>
               </div>
               <Text className="text-gray-500">&bull;</Text>
               <div className="flex items-center gap-2">
                 <ContactIcon className="size-4" />
-                <Text variant="body">{getJobTypeLabel(job.jobType)}</Text>
+                <Text variant="body">{getJobTypeLabel(data.jobType)}</Text>
               </div>
               <Text className="text-gray-500">&bull;</Text>
               <div className="flex items-center gap-2">
                 <Text variant="body">
                   Posted on{" "}
-                  {job.createdAt ? new Date(job.createdAt).toLocaleDateString() : "Unknown"}
+                  {data.createdAt ? new Date(data.createdAt).toLocaleDateString() : "Unknown"}
                 </Text>
               </div>
             </div>
@@ -58,7 +58,7 @@ const JobDetailsDialog: FC<JobDetailsDialogProps> = ({ open, job, onClose }) => 
 
         <div className="px-6 pb-6">
           <Text variant="h5">About the job</Text>
-          <Text className="mt-2 whitespace-pre-line">{job.description}</Text>
+          <Text className="mt-2 whitespace-pre-line">{data.description}</Text>
         </div>
       </DialogContent>
     </Dialog>
