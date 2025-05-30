@@ -6,7 +6,7 @@ export const companiesTable = pgTable("companies", {
   name: text("name"),
   description: text("description"),
   website: varchar("website", { length: 256 }),
-  location: text("location"),
+  location: text("location")
 });
 
 export const jobsTable = pgTable("jobs", {
@@ -20,8 +20,8 @@ export const jobsTable = pgTable("jobs", {
   createdAt: text("created_at"),
   updatedAt: text("updated_at"),
   createdBy: uuid("created_by").references(() => authUsers.id, {
-    onDelete: "cascade",
-  }),
+    onDelete: "cascade"
+  })
 });
 
 export const applicationsTable = pgTable("applications", {
@@ -29,7 +29,7 @@ export const applicationsTable = pgTable("applications", {
   userId: uuid("user_id").references(() => authUsers.id),
   jobId: uuid("job_id").references(() => jobsTable.id),
   status: text("status"),
-  appliedAt: text("applied_at"),
+  appliedAt: text("applied_at")
 });
 
 export type InsertUser = typeof authUsers.$inferInsert;
