@@ -1,6 +1,6 @@
 {
-  "id": "e590179e-32ce-4d7c-aa38-7ae0e8ccb9f1",
-  "prevId": "00000000-0000-0000-0000-000000000000",
+  "id": "7e59178e-be42-4eb4-959c-514f4a29abfd",
+  "prevId": "e590179e-32ce-4d7c-aa38-7ae0e8ccb9f1",
   "version": "7",
   "dialect": "postgresql",
   "tables": {
@@ -89,44 +89,44 @@
           "name": "title",
           "type": "text",
           "primaryKey": false,
-          "notNull": false
+          "notNull": true
         },
         "company_name": {
           "name": "company_name",
           "type": "text",
           "primaryKey": false,
-          "notNull": false
+          "notNull": true
         },
         "jobType": {
           "name": "jobType",
           "type": "jobTypes",
           "typeSchema": "public",
           "primaryKey": false,
-          "notNull": false
+          "notNull": true
         },
         "location": {
           "name": "location",
           "type": "text",
           "primaryKey": false,
-          "notNull": false
+          "notNull": true
         },
         "description": {
           "name": "description",
           "type": "text",
           "primaryKey": false,
-          "notNull": false
+          "notNull": true
         },
         "created_at": {
           "name": "created_at",
           "type": "text",
           "primaryKey": false,
-          "notNull": false
+          "notNull": true
         },
         "updated_at": {
           "name": "updated_at",
           "type": "text",
           "primaryKey": false,
-          "notNull": false
+          "notNull": true
         },
         "created_by": {
           "name": "created_by",

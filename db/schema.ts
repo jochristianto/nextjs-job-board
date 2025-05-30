@@ -1,24 +1,17 @@
-import { pgTable, text, uuid, varchar } from "drizzle-orm/pg-core";
+import { pgEnum, pgTable, text, uuid } from "drizzle-orm/pg-core";
 import { authUsers } from "drizzle-orm/supabase";
 
-export const companiesTable = pgTable("companies", {
-  id: uuid("id").primaryKey(),
-  name: text("name"),
-  description: text("description"),
-  website: varchar("website", { length: 256 }),
-  location: text("location")
-});
+export const jobTypeEnum = pgEnum("jobTypes", ["full_time", "part_time", "contract"]);
 
 export const jobsTable = pgTable("jobs", {
   id: uuid("id").primaryKey(),
-  title: text("title"),
-  description: text("description"),
-  companyId: uuid("company_id").references(() => companiesTable.id),
-  location: text("location"),
-  salary: varchar("salary", { length: 256 }),
-  employmentType: text("employment_type"),
-  createdAt: text("created_at"),
-  updatedAt: text("updated_at"),
+  title: text("title").notNull(),
+  companyName: text("company_name").notNull(),
+  jobType: jobTypeEnum().notNull(),
+  location: text("location").notNull(),
+  description: text("description").notNull(),
+  createdAt: text("created_at").notNull(),
+  updatedAt: text("updated_at").notNull(),
   createdBy: uuid("created_by").references(() => authUsers.id, {
     onDelete: "cascade"
   })
@@ -34,9 +27,6 @@ export const applicationsTable = pgTable("applications", {
 
 export type InsertUser = typeof authUsers.$inferInsert;
 export type SelectUser = typeof authUsers.$inferSelect;
-
-export type InsertCompany = typeof companiesTable.$inferInsert;
-export type SelectCompany = typeof companiesTable.$inferSelect;
 
 export type InsertJob = typeof jobsTable.$inferInsert;
 export type SelectJob = typeof jobsTable.$inferSelect;

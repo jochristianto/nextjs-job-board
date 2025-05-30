@@ -1,6 +1,6 @@
+import { DataTable } from "@/app/protected/data-table";
 import dataTableData from "@/app/protected/data.json";
 import { ChartAreaInteractive } from "@/components/chart-area-interactive";
-import { DataTable } from "@/components/data-table";
 import { SectionCards } from "@/components/section-cards";
 import { SiteHeader } from "@/components/site-header";
 import { FetchDataSteps } from "@/components/tutorial/fetch-data-steps";
