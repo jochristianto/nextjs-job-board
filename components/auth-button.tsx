@@ -1,7 +1,6 @@
+import { Button } from "@/components/ui/button";
 import { createClient } from "@/lib/supabase/server";
 import Link from "next/link";
-import { LogoutButton } from "@/components/logout-button";
-import { Button } from "@/components/ui/button";
 
 export async function AuthButton() {
   const supabase = await createClient();
@@ -12,8 +11,9 @@ export async function AuthButton() {
 
   return user ? (
     <div className="flex items-center gap-4 text-sm">
-      Hey, {user.email}!
-      <LogoutButton />
+      <Button asChild size="sm" variant="outline">
+        <Link href="/protected">Dashboard</Link>
+      </Button>
     </div>
   ) : (
     <div className="flex gap-2">

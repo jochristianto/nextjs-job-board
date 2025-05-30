@@ -1,9 +1,9 @@
-import { hasEnvVars } from "@/lib/utils";
-import type { FC } from "react";
 import { AuthButton } from "@/components/auth-button";
 import Container from "@/components/container";
 import { EnvVarWarning } from "@/components/env-var-warning";
 import Logo from "@/components/logo";
+import { hasEnvVars } from "@/lib/utils";
+import type { FC } from "react";
 
 type HeaderProps = {};
 
