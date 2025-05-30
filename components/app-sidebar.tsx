@@ -21,11 +21,6 @@ import {
 import { useUser } from "@/components/user-provider";
 
 const data = {
-  user: {
-    name: "shadcn",
-    email: "m@example.com",
-    avatar: "/avatars/shadcn.jpg"
-  },
   navMain: [
     {
       title: "Dashboard",
