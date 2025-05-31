@@ -10,6 +10,26 @@ type JobHeroProps = {
   data: TJob | null;
 };
 
+const COMPANY_COLORS = [
+  "bg-blue-500",
+  "bg-green-500",
+  "bg-red-500",
+  "bg-yellow-500",
+  "bg-purple-500",
+  "bg-pink-500",
+  "bg-indigo-500",
+  "bg-teal-500",
+  "bg-orange-500",
+  "bg-cyan-500"
+];
+
+function getCompanyColor(name: string) {
+  if (!name) return COMPANY_COLORS[0];
+  // Simple hash: use char code of first letter
+  const idx = name.charCodeAt(0) % COMPANY_COLORS.length;
+  return COMPANY_COLORS[idx];
+}
+
 const JobHero: FC<JobHeroProps> = ({ data }) => {
   if (!data) return null;
 
@@ -17,7 +37,11 @@ const JobHero: FC<JobHeroProps> = ({ data }) => {
     <div className="space-y-4">
       <div className="flex items-start justify-between">
         <div className="flex items-start space-x-6">
-          <div className="size-16 bg-blue-500 rounded-lg flex items-center justify-center text-white text-2xl font-bold">
+          <div
+            className={`size-16 rounded-lg flex items-center justify-center text-white text-2xl font-bold ${getCompanyColor(
+              data.companyName
+            )}`}
+          >
             {data.companyName.charAt(0).toUpperCase()}
           </div>
 
