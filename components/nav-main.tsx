@@ -9,6 +9,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem
 } from "@/components/ui/sidebar";
+import { LucideIcon } from "lucide-react";
 import Link from "next/link";
 
 export function NavMain({
@@ -17,7 +18,7 @@ export function NavMain({
   items: {
     title: string;
     url: string;
-    icon?: Icon;
+    icon?: LucideIcon | Icon;
   }[];
 }) {
   return (

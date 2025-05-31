@@ -44,7 +44,7 @@ const textVariants = cva("", {
 
 export interface TextProps
   extends React.HTMLAttributes<HTMLParagraphElement>,
-    VariantProps<typeof textVariants> {
+  VariantProps<typeof textVariants> {
   asChild?: boolean;
   as?: string;
 }

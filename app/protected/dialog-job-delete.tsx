@@ -19,7 +19,7 @@ type DialogJobDeleteProps = {
   onDelete?: () => void; // Optional callback for delete action
 };
 
-const DialogJobDelete: FC<DialogJobDeleteProps> = ({ open, setOpen, data, onDelete }) => {
+const DialogJobDelete: FC<DialogJobDeleteProps> = ({ open, setOpen, onDelete }) => {
   return (
     <AlertDialog open={open} onOpenChange={setOpen}>
       <AlertDialogContent>
