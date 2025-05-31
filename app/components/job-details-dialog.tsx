@@ -10,6 +10,7 @@ import { Separator } from "@/components/ui/separator";
 import { Text } from "@/components/ui/text";
 import { getJobLocationLabel, getJobTypeLabel } from "@/lib/jobs";
 import { quillOlBulletToUl } from "@/lib/string";
+import { timeAgo } from "@/lib/timeago";
 import { TJob } from "@/types/job";
 import { BriefcaseIcon, Building2Icon, ClockIcon, MapPinIcon } from "lucide-react";
 import { FC } from "react";
@@ -64,10 +65,7 @@ const JobDetailsDialog: FC<JobDetailsDialogProps> = ({ open, setOpen, data }) =>
                   </div>
                   <div className="flex items-center">
                     <ClockIcon className="size-4 mr-1" />
-                    <span>
-                      Posted{" "}
-                      {data.createdAt ? new Date(data.createdAt).toLocaleDateString() : "Unknown"}
-                    </span>
+                    <span>Posted {data.createdAt ? timeAgo(data.createdAt) : "Unknown"}</span>
                   </div>
                 </div>
               </div>
