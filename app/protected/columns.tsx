@@ -114,7 +114,12 @@ export const getColumns = ({
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end">
-                <DropdownMenuItem onSelect={() => setRowAction({ row, type: "update" })}>
+                <DropdownMenuItem
+                  onSelect={() => {
+                    // setRowAction({ row, type: "update" });
+                    window.location.href = `/protected/${row.original.id}/edit`;
+                  }}
+                >
                   <PencilIcon className="size-4" />
                   Update
                 </DropdownMenuItem>
