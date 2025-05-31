@@ -25,7 +25,7 @@ const JobDetailsDialog: FC<JobDetailsDialogProps> = ({ open, setOpen, data }) =>
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
-      <DialogHeader>
+      <DialogHeader className="sr-only">
         <DialogTitle>{data.title}</DialogTitle>
         <DialogDescription>View details for the job at {data.companyName}</DialogDescription>
       </DialogHeader>
@@ -37,14 +37,20 @@ const JobDetailsDialog: FC<JobDetailsDialogProps> = ({ open, setOpen, data }) =>
         <div className="space-y-4">
           <div className="flex items-start justify-between">
             <div className="flex items-start space-x-4">
-              <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center text-white text-2xl font-bold">
+              <div className="size-16 bg-blue-500 rounded-lg flex items-center justify-center text-white text-2xl font-bold">
                 {data.companyName.charAt(0).toUpperCase()}
               </div>
-              <div className="flex-1">
-                <h1 className="text-3xl font-bold text-gray-900 mb-2">{data.title}</h1>
+
+              <div className="flex-1 space-y-2">
+                <Text variant="h2" className="line-clamp-2 p-0">
+                  {data.title}
+                </Text>
+
                 <div className="flex items-center text-lg text-gray-600 mb-3">
                   <Building2Icon className="size-5 mr-2" />
-                  <Text variant="largeText">{data.companyName}</Text>
+                  <Text variant="largeText" className="line-clamp-1">
+                    {data.companyName}
+                  </Text>
                 </div>
 
                 <div className="flex flex-wrap items-center gap-4 text-gray-600">
