@@ -124,4 +124,4 @@ This stack is chosen to maximize developer productivity, maintainability, and ac
 
 Copyright (c) 2025 Jonathan Christianto
 
-This code is provided solely for the purpose of evaluating my technical skills as part of a job application process with Konexi. It may not be used, copied, distributed, or disclosed for any other purpose without my explicit written permission.
+This code is provided solely for the purpose of evaluating my technical skills. It may not be used, copied, distributed, or disclosed for any other purpose without my explicit written permission.
