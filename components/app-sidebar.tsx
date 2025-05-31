@@ -5,6 +5,7 @@ import * as React from "react";
 
 import Logo from "@/components/logo";
 import { NavMain } from "@/components/nav-main";
+import { NavSecondary } from "@/components/nav-secondary";
 import { NavUser } from "@/components/nav-user";
 import {
   Sidebar,
@@ -16,7 +17,7 @@ import {
   SidebarMenuItem
 } from "@/components/ui/sidebar";
 import { useUser } from "@/components/user-provider";
-import { HomeIcon } from "lucide-react";
+import { GithubIcon, HomeIcon, LinkedinIcon } from "lucide-react";
 
 const data = {
   navMain: [
@@ -30,24 +31,29 @@ const data = {
       url: "/protected",
       icon: IconListDetails
     }
+  ],
+  navSecondary: [
+    {
+      title: "LinkedIn",
+      url: "https://www.linkedin.com/in/jochristianto",
+      icon: LinkedinIcon
+    },
+    {
+      title: "GitHub Repo",
+      url: "https://github.com/jochristianto/nextjs-job-board",
+      icon: GithubIcon
+    }
+    // {
+    //   title: "Get Help",
+    //   url: "#",
+    //   icon: IconHelp
+    // },
+    // {
+    //   title: "Search",
+    //   url: "#",
+    //   icon: IconSearch
+    // }
   ]
-  // navSecondary: [
-  //   {
-  //     title: "Settings",
-  //     url: "#",
-  //     icon: IconSettings
-  //   },
-  //   {
-  //     title: "Get Help",
-  //     url: "#",
-  //     icon: IconHelp
-  //   },
-  //   {
-  //     title: "Search",
-  //     url: "#",
-  //     icon: IconSearch
-  //   }
-  // ]
 };
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
@@ -66,7 +72,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       </SidebarHeader>
       <SidebarContent>
         <NavMain items={data.navMain} />
-        {/* <NavSecondary items={data.navSecondary} className="mt-auto" /> */}
+        <NavSecondary items={data.navSecondary} className="mt-auto" />
       </SidebarContent>
       <SidebarFooter>
         <NavUser user={user} />
