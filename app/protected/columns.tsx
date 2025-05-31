@@ -80,11 +80,15 @@ export const getColumns = ({
       accessorKey: "description",
       header: "Description",
       meta: { className: "w-6/12 text-left" },
-      cell: ({ row }) => (
-        <Text variant="smallText" className="break-words whitespace-pre-line line-clamp-2">
-          {row.original.description}
-        </Text>
-      )
+      cell: ({ row }) => {
+        // Remove HTML tags for table preview
+        const plainText = row.original.description.replace(/<[^>]+>/g, "");
+        return (
+          <Text variant="smallText" className="break-words whitespace-pre-line line-clamp-2">
+            {plainText}
+          </Text>
+        );
+      }
     },
     {
       id: "actions",

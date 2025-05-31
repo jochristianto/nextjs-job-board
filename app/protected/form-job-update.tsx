@@ -1,4 +1,5 @@
 "use client";
+
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -16,14 +17,15 @@ import {
   SelectTrigger,
   SelectValue
 } from "@/components/ui/select";
-import { Textarea } from "@/components/ui/textarea";
 import { jobLocations, jobTypes } from "@/constants";
 import { jobCreateSchema } from "@/db/zod-schemas";
 import { TJob } from "@/types/job";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { LoaderCircleIcon } from "lucide-react";
-import { FC, useState } from "react";
+import dynamic from "next/dynamic";
+import { FC, useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
+import "react-quill-new/dist/quill.snow.css";
 import { z } from "zod";
 
 type FormJobUpdateProps = {
@@ -31,6 +33,8 @@ type FormJobUpdateProps = {
   onSubmit: (data: z.infer<typeof jobCreateSchema>) => void;
   onCancel?: () => void;
 };
+
+const QuillNoSSRWrapper = dynamic(() => import("react-quill-new"), { ssr: false });
 
 const FormJobUpdate: FC<FormJobUpdateProps> = ({ data, onSubmit, onCancel }) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -45,6 +49,21 @@ const FormJobUpdate: FC<FormJobUpdateProps> = ({ data, onSubmit, onCancel }) => 
       description: data.description
     }
   });
+
+  // Ref to prevent onChange firing during reset
+  const skipNextQuillChange = useRef(false);
+
+  // Keep Quill in sync with form reset (e.g. when editing a different job)
+  useEffect(() => {
+    skipNextQuillChange.current = true;
+    form.reset({
+      title: data.title,
+      companyName: data.companyName,
+      jobType: data.jobType,
+      location: data.location,
+      description: data.description
+    });
+  }, [data, form]);
 
   return (
     <Form {...form}>
@@ -160,16 +179,24 @@ const FormJobUpdate: FC<FormJobUpdateProps> = ({ data, onSubmit, onCancel }) => 
             <FormItem>
               <FormLabel>Description</FormLabel>
               <FormControl>
-                <Textarea
-                  placeholder="Describe the responsibilities, requirements, and benefits.&#10;e.g. We are looking for a frontend engineer with experience in React and TypeScript..."
-                  className="resize-none field-sizing-fixed"
-                  rows={5}
-                  {...field}
-                  value={field.value ?? ""}
-                  disabled={isSubmitting}
-                />
+                <div>
+                  <QuillNoSSRWrapper
+                    theme="snow"
+                    value={field.value ?? ""}
+                    onChange={(value) => {
+                      // Prevent double onChange when resetting
+                      if (skipNextQuillChange.current) {
+                        skipNextQuillChange.current = false;
+                        return;
+                      }
+                      field.onChange(value);
+                    }}
+                    readOnly={isSubmitting}
+                    placeholder="Describe the responsibilities, requirements, and benefits.&#10;e.g. We are looking for a frontend engineer with experience in React and TypeScript..."
+                    style={{ minHeight: 150 }}
+                  />
+                </div>
               </FormControl>
-
               <FormMessage />
             </FormItem>
           )}

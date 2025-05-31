@@ -2,6 +2,7 @@
 
 import { db } from "@/db";
 import { jobsTable } from "@/db/schema";
+import { sanitizeDescription, stripAllHtml } from "@/lib/string";
 import { createClient } from "@/lib/supabase/server";
 import { and, eq, ilike, or } from "drizzle-orm";
 
@@ -76,17 +77,23 @@ export async function getJobs(filters?: {
 
 export const createJob = withAuth(async (user, jobData) => {
   try {
-    const data = {
+    // Sanitize fields
+    const sanitizedData = {
       ...jobData,
+      title: stripAllHtml(jobData.title ?? ""),
+      companyName: stripAllHtml(jobData.companyName ?? ""),
+      location: stripAllHtml(jobData.location ?? ""),
+      jobType: stripAllHtml(jobData.jobType ?? ""),
+      description: sanitizeDescription(jobData.description ?? ""),
       id: crypto.randomUUID(),
       createdAt: new Date().toISOString(),
       updatedAt: new Date().toISOString(),
       createdBy: user.id
     };
 
-    console.log("Creating job for user:", user.id, "with data:", data);
+    console.log("Creating job for user:", user.id, "with data:", sanitizedData);
 
-    const result = await db.insert(jobsTable).values(data);
+    const result = await db.insert(jobsTable).values(sanitizedData);
 
     return { success: true, job: result[0] };
   } catch (error) {
@@ -101,8 +108,14 @@ export const updateJob = withAuth(async (user, jobId, jobData) => {
   }
 
   try {
+    // Sanitize fields
     const updatedData = {
       ...jobData,
+      title: stripAllHtml(jobData.title ?? ""),
+      companyName: stripAllHtml(jobData.companyName ?? ""),
+      location: stripAllHtml(jobData.location ?? ""),
+      jobType: stripAllHtml(jobData.jobType ?? ""),
+      description: sanitizeDescription(jobData.description ?? ""),
       updatedAt: new Date().toISOString()
     };
 

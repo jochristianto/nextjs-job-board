@@ -62,7 +62,11 @@ const JobDetailsDialog: FC<JobDetailsDialogProps> = ({ open, setOpen, data }) =>
         <div className="flex-1 w-full h-full flex flex-col overflow-y-auto">
           <div className="px-6 pb-6">
             <Text variant="h5">About the job</Text>
-            <Text className="mt-2 whitespace-pre-line">{data.description}</Text>
+            <Text
+              as="div"
+              className="mt-2 prose prose-sm prose-p:m-0 prose-ol:m-0 prose-ul:m-0 max-w-none"
+              dangerouslySetInnerHTML={{ __html: data.description }}
+            />
           </div>
         </div>
       </DialogContent>
