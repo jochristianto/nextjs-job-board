@@ -11,6 +11,15 @@ const SocialButtons = () => {
     <>
       <Button asChild size="sm" variant="outline">
         <a
+          href="https://github.com/jochristianto/nextjs-job-board/blob/main/README.md"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          README
+        </a>
+      </Button>
+      <Button asChild size="sm" variant="outline">
+        <a
           href="https://github.com/jochristianto/nextjs-job-board"
           target="_blank"
           rel="noopener noreferrer"

@@ -17,7 +17,7 @@ import {
   SidebarMenuItem
 } from "@/components/ui/sidebar";
 import { useUser } from "@/components/user-provider";
-import { GithubIcon, HomeIcon, LinkedinIcon } from "lucide-react";
+import { BookAIcon, GithubIcon, HomeIcon, LinkedinIcon } from "lucide-react";
 
 const data = {
   navMain: [
@@ -33,6 +33,11 @@ const data = {
     }
   ],
   navSecondary: [
+    {
+      title: "README",
+      url: "https://github.com/jochristianto/nextjs-job-board/blob/main/README.md",
+      icon: BookAIcon
+    },
     {
       title: "LinkedIn",
       url: "https://www.linkedin.com/in/jochristianto",
