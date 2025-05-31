@@ -160,7 +160,6 @@ const FormJobCreate: FC<FormJobCreateProps> = ({ isSubmitting }) => {
                       theme="snow"
                       value={field.value ?? ""}
                       onChange={(value) => {
-                        // Prevent double onChange when resetting
                         if (skipNextQuillChange.current) {
                           skipNextQuillChange.current = false;
                           return;
@@ -169,7 +168,7 @@ const FormJobCreate: FC<FormJobCreateProps> = ({ isSubmitting }) => {
                       }}
                       readOnly={isSubmitting}
                       placeholder="Describe the responsibilities, requirements, and benefits.&#10;e.g. We are looking for a frontend engineer with experience in React and TypeScript..."
-                      // style={{ minHeight: 150 }}
+                      style={isSubmitting ? { pointerEvents: "none", opacity: 0.7 } : {}}
                     />
                   </div>
                 </FormControl>

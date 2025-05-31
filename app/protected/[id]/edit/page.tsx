@@ -66,9 +66,9 @@ const JobEditPage = () => {
       toast.success("Job updated!");
       router.push("/protected");
     } else {
+      setIsSaving(false);
       toast.error(res.error || "Failed to update job");
     }
-    setIsSaving(false);
   };
 
   if (isLoading || !job) {

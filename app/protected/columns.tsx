@@ -31,7 +31,12 @@ export const getColumns = ({
       cell: ({ row }) => {
         const Content = () => (
           <div className="flex flex-col items-start gap-1">
-            <Text className="font-semibold">{row.original.title}</Text>
+            <Text
+              className="font-semibold truncate w-full max-w-sm overflow-hidden"
+              title={row.original.title}
+            >
+              {row.original.title}
+            </Text>
 
             <div className="flex flex-row items-start gap-1">
               <Text variant="smallText" className="text-muted-foreground font-medium">
@@ -50,17 +55,15 @@ export const getColumns = ({
         );
 
         return (
-          <>
-            <div
-              onClick={() => setRowAction({ row, type: "view" })}
-              tabIndex={0}
-              role="button"
-              aria-label={`View details for ${row.original.title}`}
-              className="cursor-pointer"
-            >
-              <Content />
-            </div>
-          </>
+          <div
+            onClick={() => setRowAction({ row, type: "view" })}
+            tabIndex={0}
+            role="button"
+            aria-label={`View details for ${row.original.title}`}
+            className="cursor-pointer"
+          >
+            <Content />
+          </div>
         );
       }
     },

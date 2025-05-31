@@ -40,9 +40,9 @@ const JobCreatePage = () => {
       toast.success("Job created!");
       router.push("/protected");
     } else {
+      setIsSaving(false);
       toast.error(res.error || "Failed to create job");
     }
-    setIsSaving(false);
   };
 
   return (

@@ -1,9 +1,10 @@
+import { redirect } from "next/navigation";
 import type { FC } from "react";
 
 type JobPageProps = {};
 
 const JobPage: FC<JobPageProps> = () => {
-  return <>Hello World</>;
+  redirect("/");
 };
 
 export default JobPage;
