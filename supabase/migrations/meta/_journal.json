@@ -15,6 +15,13 @@
       "when": 1748610785343,
       "tag": "0001_sour_the_santerians",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1748694588695,
+      "tag": "0002_curious_santa_claus",
+      "breakpoints": true
     }
   ]
 }
