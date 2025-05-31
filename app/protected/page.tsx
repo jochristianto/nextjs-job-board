@@ -1,11 +1,10 @@
 "use client";
 
-import { createJob, deleteJob, getJobs, updateJob } from "@/app/actions";
+import { createJob, deleteJob, getJobs } from "@/app/actions";
 import JobDetailsDialog from "@/app/components/job-details-dialog";
 import { getColumns } from "@/app/protected/columns";
 import DialogJobCreate from "@/app/protected/dialog-job-create";
 import DialogJobDelete from "@/app/protected/dialog-job-delete";
-import DialogJobUpdate from "@/app/protected/dialog-job-update";
 import Container from "@/components/container";
 import { DataTable } from "@/components/ui/data-table";
 import { useUser } from "@/components/user-provider";
@@ -80,33 +79,6 @@ const JobsPage: FC<JobsPageProps> = () => {
 
       {rowAction && rowAction.type === "view" && (
         <JobDetailsDialog open setOpen={() => setRowAction(null)} data={rowAction.row.original} />
-      )}
-
-      {rowAction && rowAction.type === "update" && (
-        <DialogJobUpdate
-          open
-          setOpen={() => setRowAction(null)}
-          data={rowAction.row.original}
-          onSubmit={async (job, close) => {
-            try {
-              // Call your update job function here
-              const res = await updateJob(rowAction.row.original.id, job);
-              if (!res.success) {
-                toast.error(res.error || "Failed to update job");
-                close();
-                return;
-              }
-
-              // If successful, refetch jobs and close the dialog
-              fetchJobs();
-              toast.success("Job updated successfully!");
-              close();
-            } catch (error) {
-              console.error("Error updating job:", error);
-              toast.error("Failed to update job.");
-            }
-          }}
-        />
       )}
 
       {rowAction && rowAction.type === "delete" && (

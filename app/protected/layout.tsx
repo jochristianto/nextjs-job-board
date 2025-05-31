@@ -12,7 +12,7 @@ export default function ProtectedLayout({ children }: { children: React.ReactNod
       }
     >
       <AppSidebar variant="inset" />
-      <SidebarInset className="overflow-x-hidden">{children}</SidebarInset>
+      <SidebarInset className="overflow-visible m-0!">{children}</SidebarInset>
     </SidebarProvider>
   );
 }

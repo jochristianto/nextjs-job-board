@@ -7,6 +7,7 @@ import {
 } from "@/components/ui/dialog";
 import { Text } from "@/components/ui/text";
 import { getJobLocationLabel, getJobTypeLabel } from "@/lib/jobs";
+import { quillOlBulletToUl } from "@/lib/string";
 import { TJob } from "@/types/job";
 import { Building2Icon, ContactIcon, MapPinIcon } from "lucide-react";
 import { FC } from "react";
@@ -65,7 +66,7 @@ const JobDetailsDialog: FC<JobDetailsDialogProps> = ({ open, setOpen, data }) =>
             <Text
               as="div"
               className="mt-2 prose prose-sm prose-p:m-0 prose-ol:m-0 prose-ul:m-0 max-w-none"
-              dangerouslySetInnerHTML={{ __html: data.description }}
+              dangerouslySetInnerHTML={{ __html: quillOlBulletToUl(data.description) }}
             />
           </div>
         </div>
