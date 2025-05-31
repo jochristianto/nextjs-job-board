@@ -7,6 +7,9 @@ import JobFilter from "@/app/components/job-filter";
 import Container from "@/components/container";
 import Footer from "@/components/footer";
 import Header from "@/components/header";
+import { Skeleton } from "@/components/ui/skeleton";
+import { Text } from "@/components/ui/text";
+import { SearchXIcon } from "lucide-react";
 import { useEffect, useState } from "react";
 
 export default function Home() {
@@ -38,7 +41,7 @@ export default function Home() {
   }, [locationFilter, typeFilter, searchQuery]);
 
   return (
-    <main className="flex flex-col min-h-screen bg-gray-50">
+    <main className="flex flex-col min-h-screen bg-white">
       <div className="flex-1">
         <Header />
 
@@ -57,9 +60,22 @@ export default function Home() {
             <div className="col-span-1 md:col-span-3">
               <div className="flex flex-col gap-5">
                 {isLoading ? (
-                  <p>Loading...</p>
+                  <div>
+                    {Array.from({ length: 3 }).map((_, index) => (
+                      <Skeleton key={index} className="h-30 w-full rounded-lg mb-4" />
+                    ))}
+                  </div>
                 ) : jobs.length === 0 ? (
-                  <p>No jobs found.</p>
+                  <div className="flex flex-col items-center gap-4 px-4 py-20">
+                    <SearchXIcon className="size-12" />
+
+                    <div className="text-center">
+                      <Text variant="h4">No jobs found</Text>
+                      <Text variant="body" className="text-gray-500">
+                        Try adjusting your filters or search terms.
+                      </Text>
+                    </div>
+                  </div>
                 ) : (
                   jobs.map((job) => (
                     <JobCard

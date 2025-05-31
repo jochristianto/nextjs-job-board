@@ -24,7 +24,7 @@ const JobDetailsDialog: FC<JobDetailsDialogProps> = ({ open, setOpen, data }) =>
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogContent
         showCloseButton
-        className="p-0 flex flex-col rounded-none md:rounded-xl lg:min-w-1/2"
+        className="p-0 flex flex-col rounded-lg min-w-1/2 max-w-2/3 max-h-2/3"
       >
         <DialogHeader className="border-b border-gray-200 pb-4 p-6 rounded-t bg-gray-100 flex-none">
           <DialogTitle>
