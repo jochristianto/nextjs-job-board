@@ -68,6 +68,7 @@ This architecture ensures the project is easy to extend, test, and maintain, whi
 - **Internationalization (i18n)**: Add support for multiple languages and locales.
 - **Improved Error Handling**: Provide more user-friendly error messages and fallback UI for network or server errors.
 - **Documentation**: Expand developer and user documentation for easier onboarding and maintenance.
+- **Pagination**: Implement server-side or cursor-based pagination for job listings to efficiently handle large datasets, improve performance, and enhance user experience when browsing many jobs.
 
 These improvements would make the application more robust, scalable, and user-friendly for both end users and developers.
 
