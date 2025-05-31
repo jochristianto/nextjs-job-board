@@ -1,6 +1,6 @@
 "use client";
 
-import { createJob, deleteJob, getJobs } from "@/app/actions";
+import { deleteJob, getJobs } from "@/app/actions";
 import JobDetailsDialog from "@/app/components/job-details-dialog";
 import { getColumns } from "@/app/protected/columns";
 import DialogJobDelete from "@/app/protected/dialog-job-delete";
@@ -8,14 +8,12 @@ import Container from "@/components/container";
 import { Button } from "@/components/ui/button";
 import { DataTable } from "@/components/ui/data-table";
 import { useUser } from "@/components/user-provider";
-import { jobCreateSchema } from "@/db/zod-schemas";
 import { TJob } from "@/types/job";
 import { DataTableRowAction } from "@/types/tanstack-table";
 import { IconPlus } from "@tabler/icons-react";
 import Link from "next/link";
 import { useEffect, useMemo, useState, type FC } from "react";
 import { toast } from "sonner";
-import { z } from "zod";
 
 type JobsPageProps = {};
 
@@ -32,7 +30,7 @@ const JobsPage: FC<JobsPageProps> = () => {
   const fetchJobs = async () => {
     try {
       setIsLoading(true);
-      const jobsData = await getJobs();
+      const jobsData = await getJobs(user?.id ? { userId: user.id } : undefined);
       setJobs(jobsData ?? []);
       setIsLoading(false);
     } catch (error) {
@@ -44,26 +42,11 @@ const JobsPage: FC<JobsPageProps> = () => {
 
   useEffect(() => {
     fetchJobs();
-  }, []);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [user]);
 
   if (!user) return null;
 
-  const onSubmitCreate = async (job: z.infer<typeof jobCreateSchema>, close: () => void) => {
-    try {
-      const res = await createJob(job);
-      if (!res.success) {
-        toast.error(res.message || "Failed to create job");
-        return;
-      }
-
-      fetchJobs();
-      toast.success("Job created successfully!");
-      close();
-    } catch (error) {
-      console.error("Form submission error", error);
-      toast.error("Failed to submit the form. Please try again.");
-    }
-  };
   return (
     <>
       <Container className="flex flex-1 flex-col">

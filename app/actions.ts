@@ -30,6 +30,7 @@ export async function getJobs(filters?: {
   description?: string;
   location?: string;
   jobType?: (typeof jobsTable.$inferSelect)["jobType"];
+  userId?: string;
 }) {
   const query = db.select().from(jobsTable);
 
@@ -61,13 +62,17 @@ export async function getJobs(filters?: {
     whereClauses.push(eq(jobsTable.jobType, filters.jobType));
   }
 
+  if (filters?.userId) {
+    whereClauses.push(eq(jobsTable.createdBy, filters.userId));
+  }
+
   if (whereClauses.length > 0) {
     query.where(and(...whereClauses));
   }
 
-  // const { sql, params } = query.toSQL();
-  // console.log("SQL:", sql);
-  // console.log("Params:", params);
+  const { sql, params } = query.toSQL();
+  console.log("SQL:", sql);
+  console.log("Params:", params);
 
   const jobs = await query;
   return jobs.sort((a, b) => {
