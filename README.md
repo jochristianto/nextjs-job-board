@@ -69,6 +69,21 @@ This stack is chosen to maximize developer productivity, maintainability, and ac
 - **pnpm:** Latest version (`npm install -g pnpm` or see [pnpm.io](https://pnpm.io/installation))
 - **Supabase account:** [Sign up for free](https://supabase.com/) and create a project
 
+## Project Setup
+
+This project was originally bootstrapped by following the official [Supabase Next.js Quickstart Guide](https://supabase.com/docs/guides/getting-started/quickstarts/nextjs). The guide walks through setting up a new Next.js project, connecting it to Supabase for authentication and database, and configuring environment variables.
+
+**Key steps followed:**
+
+1. Created a new Next.js app using the App Router.
+2. Set up a Supabase project and retrieved the API keys.
+3. Installed the Supabase client and configured environment variables.
+4. Implemented authentication using Supabase Auth.
+5. Connected the app to a Supabase Postgres database for data storage.
+6. Extended the base setup with Drizzle ORM, shadcn/ui, and other modern tooling for a robust developer experience.
+
+For more details, see the [Supabase Next.js Quickstart](https://supabase.com/docs/guides/getting-started/quickstarts/nextjs).
+
 ## Installation
 
 1. Make sure **nvm** is installed. If not, install it from [nvm-sh/nvm](https://github.com/nvm-sh/nvm).
