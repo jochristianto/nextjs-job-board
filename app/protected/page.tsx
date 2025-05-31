@@ -41,6 +41,8 @@ const JobsPage: FC<JobsPageProps> = () => {
   };
 
   useEffect(() => {
+    if (!user) return;
+
     fetchJobs();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user]);
@@ -79,7 +81,6 @@ const JobsPage: FC<JobsPageProps> = () => {
           data={rowAction.row.original}
           onDelete={async () => {
             try {
-              // Call your delete job function here
               const res = await deleteJob(rowAction.row.original.id);
               if (!res.success) {
                 toast.error(res.error || "Failed to delete job");
@@ -87,7 +88,6 @@ const JobsPage: FC<JobsPageProps> = () => {
                 return;
               }
 
-              // If successful, refetch jobs and close the dialog
               fetchJobs();
               toast.success("Job deleted successfully!");
               close();
