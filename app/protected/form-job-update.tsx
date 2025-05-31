@@ -172,7 +172,6 @@ const FormJobUpdate: FC<FormJobUpdateProps> = ({ isSubmitting }) => {
                       }}
                       readOnly={isSubmitting}
                       placeholder="Describe the responsibilities, requirements, and benefits.&#10;e.g. We are looking for a frontend engineer with experience in React and TypeScript..."
-                      style={{ minHeight: 150 }}
                     />
                   </div>
                 </FormControl>

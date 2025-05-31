@@ -3,14 +3,16 @@
 import { createJob, deleteJob, getJobs } from "@/app/actions";
 import JobDetailsDialog from "@/app/components/job-details-dialog";
 import { getColumns } from "@/app/protected/columns";
-import DialogJobCreate from "@/app/protected/dialog-job-create";
 import DialogJobDelete from "@/app/protected/dialog-job-delete";
 import Container from "@/components/container";
+import { Button } from "@/components/ui/button";
 import { DataTable } from "@/components/ui/data-table";
 import { useUser } from "@/components/user-provider";
 import { jobCreateSchema } from "@/db/zod-schemas";
 import { TJob } from "@/types/job";
 import { DataTableRowAction } from "@/types/tanstack-table";
+import { IconPlus } from "@tabler/icons-react";
+import Link from "next/link";
 import { useEffect, useMemo, useState, type FC } from "react";
 import { toast } from "sonner";
 import { z } from "zod";
@@ -69,7 +71,13 @@ const JobsPage: FC<JobsPageProps> = () => {
           <div className="flex items-center justify-between">
             <div></div>
             <div>
-              <DialogJobCreate disabled={isLoading} onSubmit={onSubmitCreate} />
+              {/* <DialogJobCreate disabled={isLoading} onSubmit={onSubmitCreate} /> */}
+              <Link href="/protected/create">
+                <Button size="sm">
+                  <IconPlus />
+                  <span className="hidden lg:inline">Create Job</span>
+                </Button>
+              </Link>
             </div>
           </div>
 
